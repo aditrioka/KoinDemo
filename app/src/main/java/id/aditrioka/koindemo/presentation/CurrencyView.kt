@@ -11,6 +11,7 @@ import id.aditrioka.koindemo.model.Currency
 import kotlinx.android.synthetic.main.view_currency.view.*
 import org.koin.standalone.KoinComponent
 import org.koin.standalone.inject
+import org.koin.standalone.property
 
 class CurrencyView @JvmOverloads constructor(
     context: Context,
@@ -28,8 +29,7 @@ class CurrencyView @JvmOverloads constructor(
         text_symbol.text = currency.symbol
 
         setOnClickListener {
-            urlHelper.launchUrl(context,
-                Uri.parse("https://coinmarketcap.com/currencies/${currency.slug}"))
+            urlHelper.launchCurrencyUrl(context, currency.slug)
         }
     }
 }

@@ -10,11 +10,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.ext.android.bindScope
 import org.koin.android.scope.ext.android.getOrCreateScope
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity() {
 
     val currenciesAdapter: CurrenciesAdapter by inject()
-    val currenciesViewModel: CurrenciesViewModel by inject()
+    val currenciesViewModel: CurrenciesViewModel by viewModel {
+        val currenciesJson = resources.openRawResource(R.raw.currencies)
+            .bufferedReader().use { it.readText() }
+
+        parametersOf(currenciesJson)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val currenciesJson = resources.openRawResource(R.raw.currencies)
-            .bufferedReader().use { it.readText() }
-
-        currenciesViewModel.retrieveCurrencies(currenciesJson)
+        currenciesViewModel.retrieveCurrencies()
     }
 
     private fun setupCurrenciesRecycler() {

@@ -4,11 +4,9 @@ import android.arch.lifecycle.Observer
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import id.aditrioka.koindemo.data.DataRepository
-import id.aditrioka.koindemo.data.DataRepositoryFactory
+import id.aditrioka.koindemo.presentation.CurrenciesAdapter
 import id.aditrioka.koindemo.presentation.CurrenciesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {

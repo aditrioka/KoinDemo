@@ -10,7 +10,7 @@ class CurrenciesViewModel constructor(
     private val dataRepositoryFactory: DataRepositoryFactory,
     private val jsonString: String): ViewModel() {
 
-    val currencyLiveData = MutableLiveData<List<Currency>>()
+    private val currencyLiveData = MutableLiveData<List<Currency>>()
 
     fun observeCurrencies(): LiveData<List<Currency>> {
         return currencyLiveData

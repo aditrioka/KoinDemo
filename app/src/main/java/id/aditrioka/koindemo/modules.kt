@@ -21,6 +21,6 @@ val applicationModule = module {
 }
 
 val browseModule = module("browse") {
-    viewModel { (jsonString: String) -> CurrenciesViewModel(get(), jsonString) }
     factory { CurrenciesAdapter() }
+    viewModel { (jsonString: String) -> CurrenciesViewModel(get(), jsonString) }
 }

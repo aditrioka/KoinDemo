@@ -12,6 +12,7 @@ class KoinDemoApplication : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+
         startKoin(this,
             listOf(applicationModule, browseModule),
             loadProperties = true,

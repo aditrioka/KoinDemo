@@ -8,6 +8,8 @@ import id.aditrioka.koindemo.presentation.CurrenciesAdapter
 import id.aditrioka.koindemo.presentation.CurrenciesViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.ext.android.bindScope
+import org.koin.android.scope.ext.android.getOrCreateScope
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        bindScope(getOrCreateScope("browse"))
 
         setupCurrenciesRecycler()
 

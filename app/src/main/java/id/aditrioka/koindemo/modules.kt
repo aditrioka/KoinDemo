@@ -14,10 +14,10 @@ val applicationModule = module {
     single { Gson() }
     single { UrlHelper(getProperty("currency_base_url")) }
 
-    factory<DataRepository>("local") { LocalDataRepository(get()) }
-    factory<DataRepository>("remote") { RemoteDataRepository() }
+    factory<DataRepository>/*("local")*/ { LocalDataRepository(get()) }
+//    factory<DataRepository>("remote") { RemoteDataRepository() }
 
-    factory { DataRepositoryFactory(get("local"), get("remote")) }
+//    factory { DataRepositoryFactory(get("local"), get("remote")) }
 }
 
 val browseModule = module("browse") {

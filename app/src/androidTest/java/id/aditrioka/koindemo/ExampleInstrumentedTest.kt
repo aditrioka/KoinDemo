@@ -20,12 +20,14 @@ import org.junit.Before
 import org.junit.Rule
 import org.koin.dsl.module.module
 import org.koin.standalone.StandAloneContext.loadKoinModules
+import org.koin.standalone.inject
 import org.koin.test.KoinTest
+import org.koin.test.declareMock
 
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest : KoinTest {
 
-    private val mockDataRepository = mock<DataRepository>()
+    private val mockDataRepository: DataRepository by inject()
 
     @Rule
     @JvmField
@@ -33,9 +35,7 @@ class ExampleInstrumentedTest : KoinTest {
 
     @Before
     fun setup() {
-        loadKoinModules(module(override = true) {
-            factory("local") { mockDataRepository }
-        })
+        declareMock<DataRepository>()
     }
 
     @Test
